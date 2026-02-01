@@ -12,7 +12,10 @@ export default function Footer() {
                         </div>
                         <h2 className="text-[#111418] dark:text-white text-lg font-bold leading-tight">LUXE STEP</h2>
                     </div>
-                    <p className="text-[#617589] dark:text-gray-400 text-sm max-w-xs">Curating the finest footwear for those who demand excellence in every step of their journey.</p>
+                    <p className="text-[#617589] dark:text-gray-400 text-sm max-w-xs mb-4">Curating the finest footwear for those who demand excellence in every step of their journey.</p>
+                    <a href="/admin/login" className="text-gray-300 hover:text-primary text-xs flex items-center gap-1 transition-colors">
+                        <span className="material-symbols-outlined text-sm">lock</span> Admin Portal
+                    </a>
                 </div>
                 <div>
                     <h4 className="text-sm font-bold mb-4 uppercase tracking-widest text-gray-400">Support</h4>

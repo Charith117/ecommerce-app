@@ -9,6 +9,9 @@ import Cart from "./pages/Cart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import AdminAddProduct from "./pages/AdminAddProduct.jsx";
 
+import AdminLogin from "./pages/AdminLogin.jsx";
+import AdminRoute from "./components/AdminRoute.jsx";
+
 export default function App() {
   return (
     <CartProvider>
@@ -18,7 +21,17 @@ export default function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/admin/add-product" element={<AdminAddProduct />} />
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/add-product"
+          element={
+            <AdminRoute>
+              <AdminAddProduct />
+            </AdminRoute>
+          }
+        />
+
         <Route path="*" element={<h2 style={{ padding: 20 }}>Page Not Found</h2>} />
       </Routes>
       <Footer />

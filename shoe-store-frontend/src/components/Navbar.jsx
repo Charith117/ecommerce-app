@@ -20,7 +20,6 @@ export default function Navbar() {
             <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/">New Arrivals</Link>
             <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/">Collections</Link>
             <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/">Sale</Link>
-            <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/admin/add-product">Admin</Link>
           </nav>
         </div>
         <div className="flex flex-1 justify-end gap-4 items-center">
