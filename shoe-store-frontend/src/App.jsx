@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import Cart from "./pages/Cart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import AdminAddProduct from "./pages/AdminAddProduct.jsx";
+import AdminManageProducts from "./pages/AdminManageProducts.jsx";
 
 import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
@@ -23,6 +24,14 @@ export default function App() {
         <Route path="/checkout" element={<Checkout />} />
 
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/manage-products"
+          element={
+            <AdminRoute>
+              <AdminManageProducts />
+            </AdminRoute>
+          }
+        />
         <Route
           path="/admin/add-product"
           element={

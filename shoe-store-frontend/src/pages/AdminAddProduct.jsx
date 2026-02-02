@@ -42,11 +42,12 @@ export default function AdminAddProduct() {
         </div>
 
         <nav className="space-y-1">
-          <a href="#" className="flex items-center gap-3 px-4 py-3 text-[#617589] rounded-lg hover:bg-[#f6f7f8] font-medium">Dashboard</a>
-          <a href="#" className="flex items-center gap-3 px-4 py-3 bg-blue-50 text-primary font-bold rounded-lg pointer-events-none">Inventory</a>
-          <a href="#" className="flex items-center gap-3 px-4 py-3 text-[#617589] rounded-lg hover:bg-[#f6f7f8] font-medium">Orders</a>
-          <a href="#" className="flex items-center gap-3 px-4 py-3 text-[#617589] rounded-lg hover:bg-[#f6f7f8] font-medium">Customers</a>
-          <a href="#" className="flex items-center gap-3 px-4 py-3 text-[#617589] rounded-lg hover:bg-[#f6f7f8] font-medium">Analytics</a>
+          <a href="/admin/manage-products" className="flex items-center gap-3 px-4 py-3 text-[#617589] rounded-lg hover:bg-[#f6f7f8] font-medium">
+            Manage Products
+          </a>
+          <a href="#" className="flex items-center gap-3 px-4 py-3 bg-blue-50 text-primary font-bold rounded-lg pointer-events-none">
+            Add Product
+          </a>
         </nav>
       </aside>
 
@@ -140,6 +141,7 @@ export default function AdminAddProduct() {
 
                         try {
                           const res = await api.post("/api/files/upload", formData);
+                          console.log("Upload success. Backend returned URL:", res.data);
                           setImageUrl(res.data); // Backend returns the URL string directly
                         } catch (err) {
                           console.error("Upload Error Details:", err);
@@ -173,33 +175,15 @@ export default function AdminAddProduct() {
                 </div>
               </div>
 
-              {/* Attributes */}
-              <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 p-6 shadow-sm">
-                <h2 className="font-bold text-lg mb-4 text-[#111418] dark:text-white">Attributes</h2>
-                <div className="mb-4">
-                  <label className="block text-xs uppercase text-[#617589] font-bold mb-2">Sizes</label>
-                  <div className="flex flex-wrap gap-2">
-                    {['US 7', 'US 8', 'US 9', 'US 10'].map(s => (
-                      <span key={s} className="px-2 py-1 border rounded text-xs font-bold bg-[#f6f7f8] text-[#111418]">{s}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mb-2">
-                  <label className="block text-xs uppercase text-[#617589] font-bold mb-2">Status</label>
-                  <div className="flex items-center gap-2">
-                    <div className="w-10 h-6 bg-green-500 rounded-full relative cursor-pointer">
-                      <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
-                    </div>
-                    <span className="text-sm font-bold text-[#111418] dark:text-white">Published</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div className="lg:col-span-3 flex justify-end gap-4 mt-4 pb-12">
-              <button type="button" className="bg-white border border-gray-200 font-bold py-3 px-6 rounded-lg text-[#111418]">Cancel</button>
-              <button type="submit" className="bg-primary text-white font-bold py-3 px-6 rounded-lg">Save Product</button>
+              <button type="button" className="bg-white border border-gray-200 font-bold py-3 px-6 rounded-lg text-[#111418] hover:bg-gray-50 transition">
+                Cancel
+              </button>
+              <button type="submit" className="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition">
+                Save Product
+              </button>
             </div>
           </form>
         </div>

@@ -40,6 +40,7 @@ public class FileUploadController {
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        System.out.println("Received upload request for: " + file.getOriginalFilename());
 
         try {
             // Check if the file's name contains invalid characters
@@ -49,6 +50,7 @@ public class FileUploadController {
 
             // Copy file to the target location (Replacing existing file with the same name)
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            System.out.println("Saving file to: " + targetLocation.toString());
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             // Build the URL to download the file
@@ -57,6 +59,7 @@ public class FileUploadController {
                     .path(fileName)
                     .toUriString();
 
+            System.out.println("Generated Download URI: " + fileDownloadUri);
             return fileDownloadUri;
         } catch (IOException ex) {
             throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
@@ -67,6 +70,7 @@ public class FileUploadController {
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName) {
         try {
             Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            System.out.println("Serving file from: " + filePath.toString());
             Resource resource = new UrlResource(filePath.toUri());
 
             if(resource.exists()) {
@@ -82,12 +86,15 @@ public class FileUploadController {
                 if(contentType == null) {
                     contentType = "application/octet-stream";
                 }
+                
+                System.out.println("Content Type: " + contentType);
 
                 return ResponseEntity.ok()
                         .contentType(MediaType.parseMediaType(contentType))
                         // .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"") // Don't force download
                         .body(resource);
             } else {
+                System.out.println("File not found: " + filePath);
                 throw new RuntimeException("File not found " + fileName);
             }
         } catch (Exception ex) {

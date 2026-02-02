@@ -28,15 +28,19 @@ public class ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
     }
 
-//    public Product update(Long id, Product p) {
-//        Product existing = repo.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Product not found"));
-//
-//        existing.setName(p.getName());
-//        existing.setPrice(p.getPrice());
-//        existing.setQuantity(p.getQuantity());
-//        return repo.save(existing);
-//    }
+    public Product update(Long id, Product p) {
+        Product existing = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        existing.setName(p.getName());
+        existing.setPrice(p.getPrice());
+        existing.setQuantity(p.getQuantity());
+        // Added fields
+        existing.setDescription(p.getDescription());
+        existing.setImageUrl(p.getImageUrl());
+        
+        return repo.save(existing);
+    }
 
     public void delete(Long id) {
         repo.deleteById(id);

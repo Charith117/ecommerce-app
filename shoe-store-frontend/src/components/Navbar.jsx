@@ -16,11 +16,11 @@ export default function Navbar() {
             </div>
             <h2 className="text-[#111418] dark:text-white text-xl font-black leading-tight tracking-tighter">LUXE STEP</h2>
           </Link>
-          <nav className="hidden md:flex items-center gap-8">
+          {/* <nav className="hidden md:flex items-center gap-8">
             <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/">New Arrivals</Link>
             <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/">Collections</Link>
             <Link className="text-[#111418] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" to="/">Sale</Link>
-          </nav>
+          </nav> */}
         </div>
         <div className="flex flex-1 justify-end gap-4 items-center">
           <div className="hidden lg:flex flex-col min-w-40 h-10 max-w-64 w-full">
